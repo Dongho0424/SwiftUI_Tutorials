@@ -9,7 +9,10 @@ import Foundation
 import Combine
 
 final class ModelData: ObservableObject {
-    @Published var landmarks: [Landmark] = load("landmarkData.json")
+    @Published var landmarks: [Landmark] = load("landmarkData.json") // == Observable
+    // Don't need to mark it as @Published
+    // when we do not have any possibility that this data can be modified
+    var hikes: [Hike] = load("hikeData.json")
 }
 
 func load<T: Decodable>(_ filename: String) -> T {
